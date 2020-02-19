@@ -6,5 +6,7 @@ Locales['tw'] = {
 	['money_msg'] = '全部的市民已收取到 ~y~%s ~s~元',
 	['bank_msg'] = '全部的市民已收取到 ~y~%s ~s~元至銀行內',
 	['black_msg'] = '全部的市民已收取到 ~y~%s ~s~元黑錢',	
-	['unknown_account'] = '正確的金錢種類為:\n~y~%s'
+	['unknown_weapon'] = '~r~未知的武器',
+	['unknown_account'] = '正確的金錢種類為:\n~y~%s',
+	['unknown_amount'] = '~r~你必須輸入金額'
 }

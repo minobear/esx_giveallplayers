@@ -22,13 +22,17 @@ end, {help = 'give all players item', params = {{name = "item", help = 'item nam
 TriggerEvent('es:addGroupCommand', 'giveallweapon', 'admin', function(source, args, user)
 	local xPlayers = ESX.GetPlayers()
 	local weaponName = string.upper(args[1])
-	local amount = tonumber(args[2])
+	local amount = (args[2] == nil and 1 or tonumber(args[2]))
 
 	for i=1, #xPlayers, 1 do
 		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-
-		xPlayer.addWeapon(weaponName, amount)
-		TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('weapon_msg', ESX.GetWeaponLabel(weaponName), amount), 'CHAR_MP_MORS_MUTUAL', 9)
+		
+		if ESX.GetWeaponLabel(weaponName) ~= nil then
+			xPlayer.addWeapon(weaponName, amount)
+			TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('weapon_msg', ESX.GetWeaponLabel(weaponName), amount), 'CHAR_MP_MORS_MUTUAL', 9)
+		else
+			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('unknown_weapon'))
+		end
 	end	
 	
 end, function(source, args, user)
@@ -44,17 +48,21 @@ TriggerEvent('es:addGroupCommand', 'addallmoney', 'admin', function(source, args
 	for i=1, #xPlayers, 1 do
 		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
 
-		if account == "money" then
-			xPlayer.addMoney(amount)
-			TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('money_msg', amount), 'CHAR_MP_MORS_MUTUAL', 9)
-		elseif account == 'bank' then
-			xPlayer.addAccountMoney(account, amount)
-			TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('bank_msg', amount), 'CHAR_MP_MORS_MUTUAL', 9)
-		elseif account == 'black_money' then
-			xPlayer.addAccountMoney(account, amount)
-			TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('black_msg', amount), 'CHAR_MP_MORS_MUTUAL', 9)
+		if amount ~= nil then
+			if account == "money" then
+				xPlayer.addMoney(amount)
+				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('money_msg', amount), 'CHAR_MP_MORS_MUTUAL', 9)
+			elseif account == 'bank' then
+				xPlayer.addAccountMoney(account, amount)
+				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('bank_msg', amount), 'CHAR_MP_MORS_MUTUAL', 9)
+			elseif account == 'black_money' then
+				xPlayer.addAccountMoney(account, amount)
+				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('black_msg', amount), 'CHAR_MP_MORS_MUTUAL', 9)
+			else
+				TriggerClientEvent('esx:showNotification', _source, _U('unknown_account', 'money、bank、black_money'))
+			end
 		else
-			TriggerClientEvent('esx:showNotification', _source, _U('unknown_account', 'money、bank、black_money'))
+			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('unknown_amount'))
 		end
 	end	
 	

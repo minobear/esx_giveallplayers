@@ -6,5 +6,7 @@ Locales['en'] = {
 	['money_msg'] = 'All players got cash ~y~$%s',
 	['bank_msg'] = 'All players got ~y~$%s ~s~into bank',
 	['black_msg'] = 'All players got black money ~y~$%s',	
-	['unknown_account'] = '~r~unknown account type:\n~y~%s'
+	['unknown_weapon'] = '~r~unknown weapon',
+	['unknown_account'] = '~r~unknown account type:\n~y~%s',
+	['unknown_amount'] = '~r~you need type amount'
 }
