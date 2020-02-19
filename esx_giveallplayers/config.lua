@@ -1,3 +1,3 @@
 Config = {}
 
-Config.Locale = 'en' -- en, tw
+Config.Locale = 'tw' -- en, tw
