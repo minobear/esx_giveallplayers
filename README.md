@@ -5,5 +5,7 @@ Commands:
 ```
 /giveallitem <item> <count>
 
+/giveallweapon <weapon> <amount>
+
 /addallmoney <account> <amount>
 ```
