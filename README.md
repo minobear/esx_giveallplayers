@@ -1,2 +1,2 @@
-/giveallitem <item> <count>
-/addallmoney <account> <amount>
+``/giveallitem <item> <count>``
+``/addallmoney <account> <amount>``
