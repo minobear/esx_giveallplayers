@@ -18,6 +18,23 @@ end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
 end, {help = 'give all players item', params = {{name = "item", help = 'item name'}, {name = "amount", help = 'iteam amount'}}})
 
+
+TriggerEvent('es:addGroupCommand', 'giveallweapon', 'admin', function(source, args, user)
+	local xPlayers = ESX.GetPlayers()
+	local weaponName = string.upper(args[1])
+	local amount = tonumber(args[2])
+
+	for i=1, #xPlayers, 1 do
+		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
+
+		xPlayer.addWeapon(weaponName, amount)
+		TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('weapon_msg', ESX.GetWeaponLabel(weaponName), amount), 'CHAR_MP_MORS_MUTUAL', 9)
+	end	
+	
+end, function(source, args, user)
+	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
+end, {help = 'give all players weapon', params = {{name = "weapon", help = 'weapon name'}, {name = "ammo", help = 'ammo amount'}}})
+
 TriggerEvent('es:addGroupCommand', 'addallmoney', 'admin', function(source, args, user)
 	local _source = source
 	local xPlayers = ESX.GetPlayers()
