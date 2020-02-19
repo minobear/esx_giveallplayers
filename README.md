@@ -1,7 +1,8 @@
-This is a simple plugin \n
+This is a simple plugin
 You can give all players item or money
 
-```Commands:
+Commands:
+```
 /giveallitem <item> <count>
 
 /addallmoney <account> <amount>
