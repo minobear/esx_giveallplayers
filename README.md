@@ -1,5 +1,5 @@
 This is a simple plugin
-You can give all players item or money
+You can give all players item or weapon or money
 
 Commands:
 ```
@@ -9,3 +9,5 @@ Commands:
 
 /addallmoney <account> <amount>
 ```
+
+https://forum.cfx.re/t/release-esx-give-all-players-item-or-money/1027386
