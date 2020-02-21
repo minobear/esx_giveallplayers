@@ -13,7 +13,8 @@ also you can setting auto give time in config to all players
 ```
 
 **Config:**
-```Config.AllowAdminInGameCommand = true -- Commands: /giveallitem <item> <count>, /giveallweapon <weapon> <ammo amount>, /addallmoney <account> <amount>
+```
+Config.AllowAdminInGameCommand = true -- Commands: /giveallitem <item> <count>, /giveallweapon <weapon> <ammo amount>, /addallmoney <account> <amount>
 Config.EnableServerCommand = true -- you can using command on console to give
 
 -- how many minutes to give. if don't want, you can type false
