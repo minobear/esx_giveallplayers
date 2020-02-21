@@ -1,5 +1,6 @@
 This is a simple plugin
 You can give all players item or weapon or money with command
+
 Or setting auto give time to all players
 
 Commands:
