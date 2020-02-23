@@ -96,6 +96,7 @@ RegisterCommand('_giveallitem', function(source, args)
 				if ESX.GetItemLabel(item) ~= nil then
 					xPlayer.addInventoryItem(item, count)
 					TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('item_msg', count, ESX.GetItemLabel(item)), 'CHAR_MP_MORS_MUTUAL', 9)
+					print('You give all players ' ..count.. 'x ' ..item)
 				else
 					print(_U('unknown_item'))
 				end	
@@ -142,6 +143,7 @@ RegisterCommand('_giveallweapon', function(source, args)
 				if ESX.GetWeaponLabel(weaponName) ~= nil then
 					xPlayer.addWeapon(weaponName, amount)
 					TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('weapon_msg', ESX.GetWeaponLabel(weaponName), amount), 'CHAR_MP_MORS_MUTUAL', 9)
+					print('You give all players ' ..amount.. 'x ' ..weaponName)
 				else
 					print(_U('unknown_weapon'))
 				end
@@ -199,12 +201,15 @@ RegisterCommand('_addallmoney', function(source, args)
 					if account == "money" then
 						xPlayer.addMoney(amount)
 						TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('money_msg', amount), 'CHAR_MP_MORS_MUTUAL', 9)
+						print('You give all players $' ..amount.. ' money')
 					elseif account == 'bank' then
 						xPlayer.addAccountMoney(account, amount)
 						TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('bank_msg', amount), 'CHAR_MP_MORS_MUTUAL', 9)
+						print('You give all players $' ..amount.. ' into bank')
 					elseif account == 'black_money' then
 						xPlayer.addAccountMoney(account, amount)
 						TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('black_msg', amount), 'CHAR_MP_MORS_MUTUAL', 9)
+						print('You give all players $' ..amount.. ' black money')
 					else
 						print(_U('unknown_account', 'money、bank、black_money'))
 					end

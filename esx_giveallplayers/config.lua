@@ -2,7 +2,7 @@ Config = {}
 Config.Locale = 'en' -- en, tw
 
 Config.AllowAdminInGameCommand = true -- Commands: /giveallitem <item> <count>, /giveallweapon <weapon> <ammo amount>, /addallmoney <account> <amount>
-Config.EnableServerCommand = true -- you can using command on console to give. but command prefix need change to "_", example: _giveallitem, _giveallweapon, _addallmoney
+Config.EnableServerCommand = true -- you can using command on console to give. but command prefix need changed to "_", example: _giveallitem, _giveallweapon, _addallmoney
 
 -- how many minutes to give. if don't want, you can type false
 Config.TimeGiveItem = 30
