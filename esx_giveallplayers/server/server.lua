@@ -83,7 +83,7 @@ end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
 end, {help = 'give all players item', params = {{name = "item", help = 'item name'}, {name = "amount", help = 'iteam amount'}}})
 
-RegisterCommand('giveallitem', function(source, args)
+RegisterCommand('_giveallitem', function(source, args)
 	if Config.EnableServerCommand then
 		if source == 0 then
 			local xPlayers = ESX.GetPlayers()
@@ -129,7 +129,7 @@ end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
 end, {help = 'give all players weapon', params = {{name = "weapon", help = 'weapon name'}, {name = "ammo", help = 'ammo amount'}}})
 
-RegisterCommand('giveallweapon', function(source, args)
+RegisterCommand('_giveallweapon', function(source, args)
 	if Config.EnableServerCommand then
 		if source == 0 then
 			local xPlayers = ESX.GetPlayers()
@@ -185,7 +185,7 @@ end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
 end, {help = 'give all players money', params = {{name = "account", help = 'money account'}, {name = "amount", help = 'money amount'}}})
 
-RegisterCommand('addallmoney', function(source, args)
+RegisterCommand('_addallmoney', function(source, args)
 	if Config.EnableServerCommand then
 		if source == 0 then
 			local xPlayers = ESX.GetPlayers()
