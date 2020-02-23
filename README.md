@@ -3,19 +3,26 @@ You can give all players item or weapon or money with command
 
 also you can setting auto give time in config to all players
 
-**Commands:**
+**In Game Commands:**
 ```
 /giveallitem <item> <count>
-
 /giveallweapon <weapon> <amount>
-
 /addallmoney <account> <amount>
 ```
+
+**On Console Commands:** 
+(need changed prefix to “_”)
+```
+_giveallitem <item> <count> 
+_giveallweapon <weapon> <ammo amount>
+_addallmoney <account> <amount>
+```
+
 
 **Config:**
 ```
 Config.AllowAdminInGameCommand = true -- Commands: /giveallitem <item> <count>, /giveallweapon <weapon> <ammo amount>, /addallmoney <account> <amount>
-Config.EnableServerCommand = true -- you can using command on console to give. but command prefix need change to "_", example: _giveallitem, _giveallweapon, _addallmoney
+Config.EnableServerCommand = true -- you can using command on console to give. but command prefix need changed to "_", example: _giveallitem, _giveallweapon, _addallmoney
 
 -- how many minutes to give. if don't want, you can type false
 Config.TimeGiveItem = 30
