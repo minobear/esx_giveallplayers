@@ -17,11 +17,17 @@ end)
 function TimeGiveItems()
 	local xPlayers = ESX.GetPlayers()
 	for i=1, #xPlayers, 1 do
-		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])			
-		for i=1, #Config.Items, 1 do
-			xPlayer.addInventoryItem(Config.Items[i].name, Config.Items[i].count)	
-			TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('item_msg', Config.Items[i].count, ESX.GetItemLabel(Config.Items[i].name)), 'CHAR_MP_MORS_MUTUAL', 9)
-		end						
+		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
+		if Config.RandomGiveItem then
+			local ranItem = math.random(1, #Config.Items)
+			xPlayer.addInventoryItem(Config.Items[ranItem].name, Config.Items[ranItem].count)	
+			TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('item_msg', Config.Items[ranItem].count, ESX.GetItemLabel(Config.Items[ranItem].name)), 'CHAR_MP_MORS_MUTUAL', 9)			
+		else
+			for i=1, #Config.Items, 1 do
+				xPlayer.addInventoryItem(Config.Items[i].name, Config.Items[i].count)	
+				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('item_msg', Config.Items[i].count, ESX.GetItemLabel(Config.Items[i].name)), 'CHAR_MP_MORS_MUTUAL', 9)
+			end
+		end
 	end
 	SetTimeout(Config.TimeGiveItem * 60000, TimeGiveItems)
 end
@@ -29,19 +35,33 @@ end
 function TimeGiveMoney()
 	local xPlayers = ESX.GetPlayers()
 	for i=1, #xPlayers, 1 do
-		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])			
-		for i=1, #Config.Money, 1 do
-			if Config.Money[i].account == 'money' then
-				xPlayer.addMoney(Config.Money[i].amount)
-				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('money_msg', Config.Money[i].amount), 'CHAR_MP_MORS_MUTUAL', 9)
-			elseif Config.Money[i].account == 'bank' then
-				xPlayer.addAccountMoney(Config.Money[i].account, Config.Money[i].amount)
-				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('bank_msg', Config.Money[i].amount), 'CHAR_MP_MORS_MUTUAL', 9)				
-			elseif Config.Money[i].account == 'black_money' then
-				xPlayer.addAccountMoney(Config.Money[i].account, Config.Money[i].amount)
-				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('black_msg', Config.Money[i].amount), 'CHAR_MP_MORS_MUTUAL', 9)						
-			end
-		end						
+		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])	
+		if Config.RandomGiveMoney then
+			local ranMoney = math.random(1, #Config.Money)
+			if Config.Money[ranMoney].account == 'money' then
+				xPlayer.addMoney(Config.Money[ranMoney].amount)
+				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('money_msg', Config.Money[ranMoney].amount), 'CHAR_MP_MORS_MUTUAL', 9)
+			elseif Config.Money[ranMoney].account == 'bank' then
+				xPlayer.addAccountMoney(Config.Money[ranMoney].account, Config.Money[ranMoney].amount)
+				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('bank_msg', Config.Money[ranMoney].amount), 'CHAR_MP_MORS_MUTUAL', 9)				
+			elseif Config.Money[ranMoney].account == 'black_money' then
+				xPlayer.addAccountMoney(Config.Money[ranMoney].account, Config.Money[ranMoney].amount)
+				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('black_msg', Config.Money[ranMoney].amount), 'CHAR_MP_MORS_MUTUAL', 9)						
+			end			
+		else
+			for i=1, #Config.Money, 1 do
+				if Config.Money[i].account == 'money' then
+					xPlayer.addMoney(Config.Money[i].amount)
+					TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('money_msg', Config.Money[i].amount), 'CHAR_MP_MORS_MUTUAL', 9)
+				elseif Config.Money[i].account == 'bank' then
+					xPlayer.addAccountMoney(Config.Money[i].account, Config.Money[i].amount)
+					TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('bank_msg', Config.Money[i].amount), 'CHAR_MP_MORS_MUTUAL', 9)				
+				elseif Config.Money[i].account == 'black_money' then
+					xPlayer.addAccountMoney(Config.Money[i].account, Config.Money[i].amount)
+					TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('black_msg', Config.Money[i].amount), 'CHAR_MP_MORS_MUTUAL', 9)						
+				end
+			end			
+		end
 	end
 	SetTimeout(Config.TimeGiveMoney * 60000, TimeGiveMoney)	
 end
@@ -49,11 +69,17 @@ end
 function TimeGiveWeapon()
 	local xPlayers = ESX.GetPlayers()
 	for i=1, #xPlayers, 1 do
-		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])			
-		for i=1, #Config.Weapon, 1 do
-			xPlayer.addWeapon(Config.Weapon[i].weaponName, Config.Weapon[i].amount)
-			TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('weapon_msg', ESX.GetWeaponLabel(Config.Weapon[i].weaponName), Config.Weapon[i].amount), 'CHAR_MP_MORS_MUTUAL', 9)			
-		end						
+		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])	
+		if Config.RandomGiveWeapon then
+			local ranWeapon = math.random(1, #Config.Weapon)
+			xPlayer.addWeapon(Config.Weapon[ranWeapon].weaponName, Config.Weapon[ranWeapon].amount)
+			TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('weapon_msg', ESX.GetWeaponLabel(Config.Weapon[ranWeapon].weaponName), Config.Weapon[ranWeapon].amount), 'CHAR_MP_MORS_MUTUAL', 9)						
+		else
+			for i=1, #Config.Weapon, 1 do
+				xPlayer.addWeapon(Config.Weapon[i].weaponName, Config.Weapon[i].amount)
+				TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('subject'), _U('subject2'), _U('weapon_msg', ESX.GetWeaponLabel(Config.Weapon[i].weaponName), Config.Weapon[i].amount), 'CHAR_MP_MORS_MUTUAL', 9)			
+			end					
+		end
 	end
 	SetTimeout(Config.TimeGiveWeapon * 60000, TimeGiveWeapon)	
 end
